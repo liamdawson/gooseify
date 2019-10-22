@@ -13,6 +13,7 @@ docker-compose up --build
 
 ```shell
 cd sam-app
+sam build
 aws-vault exec <profile> -- sam package --s3-bucket <package-destination-bucket> --output-template-file packaged.yaml
 aws-vault exec <profile> -- sam deploy --stack-name <stack-name> --template-file packaged.yaml --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND
 ```
