@@ -1,5 +1,7 @@
 # Gooseify
 
+Needs more cowbell, but for geese. "Watermarks" MP3 files with the goose honk from the Untitled Goose Game.
+
 ## Jupyter
 
 ```shell
