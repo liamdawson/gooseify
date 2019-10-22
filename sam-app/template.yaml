@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  sam-app
+
+  Sample SAM Template for sam-app
+
+Resources:
+  GooseifyAudio:
+    Type: AWS::Serverless::Function
+    Properties:
+      Layers:
+        - !Ref GooseifyDependencies
+      CodeUri: gooseify/
+      Handler: app.lambda_handler
+      Runtime: python3.6
+      Timeout: 60
+      Policies:
+        - S3CrudPolicy:
+            BucketName: gooseify-transform
+      Events:
+        GooseifyAudioEvent:
+          Type: S3
+          Properties:
+            Bucket: !Ref GooseifyAudioBucket
+            Events: s3:ObjectCreated:*
+
+  GooseifyAudioBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+        BucketName: gooseify-transform
+
+  GooseifyDependencies:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+        LayerName: gooseify-dependencies
+        Description: Dependencies for gooseify's lambda
+        ContentUri: build/layer
+        CompatibleRuntimes:
+          - python3.6
+        RetentionPolicy: Retain
+
+Outputs:
+  TransformBucket:
+    Description: "Destination for files destined for improvement"
+    Value: !GetAtt GooseifyAudioBucket.Arn
+  

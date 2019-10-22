@@ -1,0 +1,10 @@
+version: '2'
+services:
+  notebook:
+    build: .
+    environment:
+      JUPYTER_TOKEN: "effort"
+    ports: 
+      - 8888:8888
+    volumes:
+      - .:/home/jovyan/work
