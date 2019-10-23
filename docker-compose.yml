@@ -1,7 +1,9 @@
 version: '2'
 services:
   notebook:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.local
     environment:
       JUPYTER_TOKEN: "effort"
     ports: 
