@@ -1,5 +1,7 @@
 # Gooseify
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/liamdawson/gooseify/master?filepath=experiment.ipynb)
+
 Needs more cowbell, but for geese. "Watermarks" MP3 files with the goose honk from the Untitled Goose Game.
 
 ## Jupyter
